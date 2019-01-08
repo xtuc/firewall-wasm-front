@@ -1,0 +1,47 @@
+[package]
+authors = ["Sven Sauleau"]
+categories = ["wasm"]
+description = ""
+license = ""
+name = "rusty-wasm-firewall-front"
+readme = "./README.md"
+version = "0.0.1"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+cfg-if = "0.1.5"
+serde = "^1.0.59"
+serde_derive = "^1.0.59"
+serde_json = "1.0"
+
+# The `console_error_panic_hook` crate provides better debugging of panics by
+# logging them with `console.error`. This is great for development, but requires
+# all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
+# code size when deploying.
+console_error_panic_hook = { version = "0.1.5", optional = true }
+
+# `wee_alloc` is a tiny allocator for wasm that is only ~1K in code size
+# compared to the default allocator's ~10K. It is slower than the default
+# allocator, however.
+wee_alloc = { version = "0.4.2", optional = true }
+
+compiler = { path = "../../rusty-wasm-firewall/compiler" }
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+  "Document",
+  "Element",
+  "HtmlElement",
+  "Node",
+  "Window",
+]
+
+[dependencies.wasm-bindgen]
+version = "^0.2"
+features = ["serde-serialize"]
+
+[features]
+default = ["console_error_panic_hook"]

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>Firewall rule Wasm compiler</title>
+
+    <link rel="stylesheet" type="text/css" href="https://sauleau.com/style.css">
+    <link rel="stylesheet" type="text/css" href="https://sauleau.com/editor.css">
+  </head>
+  <body>
+    <h1>Firewall rule Wasm compiler</h1>
+
+    <p>
+      Just a POC for now.
+      <br />
+      Here are some tests URIs:<br >
+        - <a href="/">/</a><br >
+        - <a href="/foo">/foo</a><br >
+        - <a href="/bar">/bar</a>
+    </p>
+
+    <div class='window'>
+      <div class='window-header'>
+        <div class='action-buttons'></div>
+        <span class='language'>HTTP request</span>
+      </div>
+      <div class='window-body' style='height: 90px;'>
+        <pre class='code-output'>
+          <code class='language-js' id="request"></code>
+        </pre>
+      </div>
+    </div>
+
+    <p>
+      Based on the HTTP request above you can match against <code>http.host</code>
+      or <code>http.uri</code>.
+
+      <br />
+      Combinations are not yet supported.
+    </p>
+    <input id="source" value="http.uri==/" />
+    <input value="go" type="button" id="run" />
+
+    <div class='window'>
+      <div class='window-header'>
+        <div class='action-buttons'></div>
+        <span class='language'>Output</span>
+      </div>
+      <div class='window-body' style='height: 90px;'>
+        <pre class='code-output'>
+          <code class='language-out' id="log"></code>
+        </pre>
+      </div>
+    </div>
+
+    <div class='window'>
+      <div class='window-header'>
+        <div class='action-buttons'></div>
+        <span class='language'>WebAssembly Module</span>
+      </div>
+      <div class='window-body' style='height: 200px;'>
+        <pre class='code-output'>
+          <code class='language-wast' id="wast"></code>
+        </pre>
+      </div>
+    </div>
+
+  </body>
+</html>
+
